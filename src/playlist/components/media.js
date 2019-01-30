@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './media.css';
 
 class Media extends Component {
@@ -30,5 +31,20 @@ class Media extends Component {
         )
     }
 }
+
+//Defino propTypes con propiedades y tipos para ser validados
+Media.propTypes = {
+    image: PropTypes.string,
+    //isRequired para valor obligatorio
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string,
+    //ejemplo:
+    //unaPropiedad: number //valida numeros
+    //otros tipos de datos: object, func (función), array, etc
+    //oneOf valida texto esperado de una colección
+    type: PropTypes.oneOf(['video', 'audio'])
+};
+
+//Doc de PropType: https://reactjs.org/docs/typechecking-with-proptypes.html
 
 export default Media;
