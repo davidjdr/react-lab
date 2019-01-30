@@ -4,6 +4,21 @@ import './media.css';
 
 class Media extends Component {
     
+    //forma de hacerlo con ES6
+    /*
+    constructor(props) {
+        super(props)
+        //enlazo evento con clase, se cambia el contexto de la función
+        this.handleClick = this.handleClick.bind(this);
+    }
+    */
+
+    //gracias al uso de arrow function (que heredan el contexto del padre)
+    //puedo usar el this.props, sin necesidad de hacer el bind en el constructor
+    handleClick = (event) => {
+        console.log(this.props.image);
+    }
+
     render(){
         const styles = {
             container: {
@@ -15,7 +30,7 @@ class Media extends Component {
         }
         return (
             /*class aunque es un atributo html tambien es una palabra resrvada de js, por lo que se sustituye con className*/
-            <div className="Media">
+            <div className="Media" onClick={this.handleClick}>
                 <div className="Media-cover">
                    <img
                     src={this.props.image}
